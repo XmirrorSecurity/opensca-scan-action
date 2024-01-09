@@ -25,8 +25,7 @@ runs:
         curl -sSL https://raw.githubusercontent.com/XmirrorSecurity/OpenSCA-cli/master/scripts/install.sh | bash
         export PATH=$PATH:/home/runner/.config/opensca-cli
         opensca-cli -path . -token ${{ inputs.token }} -proj "${{ inputs.proj }}" -out outputs/results.sarif,${{ inputs.out }}
-    - name: "Upload reports"
-      if: ${{ inputs.out }}  != ""
+    - name: "Upload artifacts"
       uses: "actions/upload-artifact@v4"
       with:
         name: "OpenSCA-artifacts"
