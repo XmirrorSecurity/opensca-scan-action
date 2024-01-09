@@ -23,16 +23,18 @@ runs:
       shell: bash
       run: |
         curl -sSL https://raw.githubusercontent.com/XmirrorSecurity/OpenSCA-cli/master/scripts/install.sh | bash
-        opensca-cli -path . -token ${{ inputs.token }} -proj ${{ inputs.proj }} -out results.sarif,${{ inputs.out }}
+        export PATH=$PATH:/home/runner/.config/opensca-cli
+        opensca-cli -path . -token ${{ inputs.token }} -proj "${{ inputs.proj }}" -out outputs/results.sarif,${{ inputs.out }}
     - name: "Upload reports"
-      if: ${{ inputs.out != "" }}
+      if: ${{ inputs.out }}  != ""
       uses: "actions/upload-artifact@v4"
       with:
-        name: "OpenSCA Reports"
-        path: outputs/
+        name: "OpenSCA-artifacts"
+        path: |
+          opensca.log
+          outputs/
         if-no-files-found: warn
     - name: "Upload results to repository"
       uses: "github/codeql-action/upload-sarif@v3"
       with:
-          sarif_file: results.sarif
-  
+          sarif_file: outputs/results.sarif
