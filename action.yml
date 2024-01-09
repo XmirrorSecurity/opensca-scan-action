@@ -1,0 +1,38 @@
+name: "OpenSCA"
+description: "Check your application for software supply chain risk using OpenSCA"
+author: "Xmirror Security OpenSCA team"
+branding:
+  icon: "alert-triangle"
+  color: "yellow"
+inputs:
+  token:
+    description: "OpenSCA Personal Access Token"
+    required: true
+  proj:
+    description: "The OpenSCA SaaS ProjectID to bind to"
+    required: false
+    default: ""
+  out:
+    description: "Report to upload to repository. Use ',' to separate, only reports in the 'outputs' directory will be uploaded."
+    required: false
+    default: ""
+runs:
+  using: "composite"
+  steps:
+    - name: Execute OpenSCA Scan
+      shell: bash
+      run: |
+        curl -sSL https://raw.githubusercontent.com/XmirrorSecurity/OpenSCA-cli/master/scripts/install.sh | bash
+        opensca-cli -path . -token ${{ inputs.token }} -proj ${{ inputs.proj }} -out results.sarif,${{ inputs.out }}
+    - name: "Upload reports"
+      if: ${{ inputs.out != "" }}
+      uses: "actions/upload-artifact@v4"
+      with:
+        name: "OpenSCA Reports"
+        path: outputs/
+        if-no-files-found: warn
+    - name: "Upload results to repository"
+      uses: "github/codeql-action/upload-sarif@v3"
+      with:
+          sarif_file: results.sarif
+  
