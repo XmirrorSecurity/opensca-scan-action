@@ -9,7 +9,7 @@ This action using [OpenSCA-cli](https://github.com/XmirrorSecurity/OpenSCA-cli) 
   - [Save the scan log for troubleshooting](#save-the-scan-log-for-troubleshooting)
   - [Upload log and reports to repository](#upload-log-and-reports-to-repository)
 - [Troubleshooting](#troubleshooting)
-  - [Permission denied](#permission-denied)
+  - [Permission problem](#permission-problem)
   - [Where does the artifact go?](#where-does-the-artifact-go)
 
 
@@ -98,7 +98,7 @@ You can also view the full result in [OpenSCA SaaS](https://opensca.xmirror.cn/c
 
 If you have any questions, please free to create an issue.
 
-## Permission denied
+## Permission problem
 
 If the action run failed with permission denied error, you may need to check the permission of the action.
 
