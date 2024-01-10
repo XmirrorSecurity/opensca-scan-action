@@ -11,11 +11,13 @@ inputs:
   proj:
     description: "The OpenSCA SaaS ProjectID to bind to"
     required: false
-    default: ""
   out:
     description: "Report to upload to repository. Use ',' to separate, only reports in the 'outputs' directory will be uploaded."
     required: false
-    default: ""
+  need-artifact:
+    description: "Whether to upload the log and reports to the repository"
+    required: false
+    default: "false"
 runs:
   using: "composite"
   steps:
@@ -27,6 +29,7 @@ runs:
         opensca-cli -path . -token ${{ inputs.token }} -proj "${{ inputs.proj }}" -out outputs/results.sarif,${{ inputs.out }}
     - name: "Upload artifacts"
       uses: "actions/upload-artifact@v4"
+      if: ${{ inputs.need-artifact }} == "true"
       with:
         name: "OpenSCA-artifacts"
         path: |
