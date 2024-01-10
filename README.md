@@ -6,9 +6,11 @@ This action using [OpenSCA-cli](https://github.com/XmirrorSecurity/OpenSCA-cli) 
 - [Inputs](#inputs)
 - [Scenarios](#scenarios)
   - [Bind to OpenSCA SaaS project](#bind-to-opensca-saas-project)
+  - [Save the scan log for troubleshooting](#save-the-scan-log-for-troubleshooting)
   - [Upload log and reports to repository](#upload-log-and-reports-to-repository)
 - [Troubleshooting](#troubleshooting)
   - [Permission denied](#permission-denied)
+  - [Where does the artifact go?](#where-does-the-artifact-go)
 
 
 # Usage
@@ -67,6 +69,16 @@ You can also view the full result in [OpenSCA SaaS](https://opensca.xmirror.cn/c
     proj: ${{ secrets.OPENSCA_PROJECT_ID }}
 ```
 
+## Save the scan log for troubleshooting
+
+```yaml
+- name: Run OpenSCA Scan
+  uses: XmirrorSecurity/opensca-scan-action@v1
+  with:
+    token: ${{ secrets.OPENSCA_TOKEN }}
+    need-artifact: "true"
+```
+
 ## Upload log and reports to repository
 
 ```yaml
@@ -80,8 +92,6 @@ You can also view the full result in [OpenSCA SaaS](https://opensca.xmirror.cn/c
 
 > Note: Only reports in the 'outputs' directory will be uploaded.
 
-Then you can see the reports and scan log at the bottom of the workflow summary page. Here's a screenshot of something you might see:
-
 ![artifacts](/resources/artifacts.jpg)
 
 # Troubleshooting
@@ -93,3 +103,9 @@ If you have any questions, please free to create an issue.
 If the action run failed with permission denied error, you may need to check the permission of the action.
 
 Go to `Settings` -> `Actions` -> `General`, in the `Workflow permissions` section, check "Read and write permissions", then click "Save".
+
+## Where does the artifact go?
+
+At the bottom of the workflow summary page, there is a dedicated section for artifacts. Here's a screenshot of something you might see:
+
+![artifacts](/resources/artifacts.jpg)
