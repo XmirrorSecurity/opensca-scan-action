@@ -94,8 +94,6 @@ You can also view the full result in [OpenSCA SaaS](https://opensca.xmirror.cn/c
 
 > Note: Only reports in the 'outputs' directory will be uploaded.
 
-![artifacts](/resources/artifacts.jpg)
-
 # Troubleshooting
 
 If you have any questions, please free to create an issue.
