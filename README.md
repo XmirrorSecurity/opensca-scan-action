@@ -21,7 +21,12 @@ sample workflow
 on:
   push:
     branches:
-    pull_request:
+        - master
+        - main
+  pull_request:
+    branches:
+        - master
+        - main
 
 jobs:
   opensca-scan:
