@@ -9,7 +9,7 @@ This action using [OpenSCA-cli](https://github.com/XmirrorSecurity/OpenSCA-cli) 
   - [Save the scan log for troubleshooting](#save-the-scan-log-for-troubleshooting)
   - [Upload log and reports to repository](#upload-log-and-reports-to-repository)
 - [Troubleshooting](#troubleshooting)
-  - [Permission problem](#permission-problem)
+  - [Permission denied](#permission-denied)
   - [Where does the artifact go?](#where-does-the-artifact-go)
 
 
@@ -35,6 +35,8 @@ jobs:
         with:
           token: ${{ secrets.OPENSCA_TOKEN }}
 ```
+
+> You need create secrets `OPENSCA_TOKEN` first. [See here](https://docs.github.com/en/actions/reference/encrypted-secrets#creating-encrypted-secrets-for-a-repository)
 
 After finished scan, you can see the report in `Security/Code scanning` tab in your repository. 
 
@@ -98,7 +100,7 @@ You can also view the full result in [OpenSCA SaaS](https://opensca.xmirror.cn/c
 
 If you have any questions, please free to create an issue.
 
-## Permission problem
+## Permission denied
 
 If the action run failed with permission denied error, you may need to check the permission of the action.
 
