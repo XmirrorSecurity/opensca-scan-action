@@ -44,12 +44,12 @@ You can also view the full result in [OpenSCA SaaS](https://opensca.xmirror.cn/c
 
 # Inputs
 
-| Name | Description | Required |
-| --- | --- | --- |
-| token | OpenSCA auth token. [Get from here](https://opensca.xmirror.cn/console/auth-token)  | ✔ |
-| proj | The OpenSCA SaaS projectID to bind to | ✖ |  |
-| out | Report to upload to repository. Use ',' to separate, only reports in the 'outputs' directory will be uploaded. | ✖ |
-| need-artifact | Whether to upload the log and reports to the repository. Default: "false" | ✖ |
+| Name | Required | Description |
+| :---: | :---: | --- |
+| token | ✔ | OpenSCA auth token. [Get from here](https://opensca.xmirror.cn/console/auth-token) |
+| proj | ✖ | The OpenSCA SaaS projectID to bind to |  |
+| out | ✖ | Report to upload to repository. Use ',' to separate, only reports in the 'outputs' directory will be uploaded. |
+| need-artifact | ✖ | Whether to upload the log and reports to the repository. Default: "false" |
 
 > How to get the token? [See here]()
 > 
