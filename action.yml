@@ -1,4 +1,4 @@
-name: "OpenSCA"
+name: "OpenSCA Scan Action"
 description: "Check your application for software supply chain risk using OpenSCA"
 author: "Xmirror Security OpenSCA team"
 branding:
